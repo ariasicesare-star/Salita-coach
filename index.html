@@ -2,148 +2,87 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101916">
-<meta name="description" content="Piano invernale Zwift per migliorare FTP, resistenza in salita e cadenza.">
+<meta name="description" content="Piano di allenamento ciclistico invernale personalizzabile">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Salita Coach</title>
 <style>
-:root{color-scheme:dark;--bg:#101916;--panel:#1a2621;--panel2:#22312a;--text:#f1f7f2;--muted:#a9bbb0;--line:#35473d;--accent:#b7f36b;--accentText:#17210d}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45}
-main{max-width:720px;margin:auto;padding:18px 16px 42px;padding-bottom:calc(42px + env(safe-area-inset-bottom))}
-header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin:8px 0 18px}.eyebrow{font-size:.72rem;letter-spacing:.13em;color:var(--muted);font-weight:800}.title{font-size:2rem;font-weight:850;letter-spacing:-.04em;margin:3px 0}.sub{color:var(--muted);font-size:.9rem}.tag{border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:.8rem;font-weight:700;white-space:nowrap}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:14px;margin:12px 0}.stat-label{font-size:.75rem;color:var(--muted)}.stat-value{font-size:1.18rem;font-weight:850;margin-top:4px}.section-title{font-size:1.03rem;font-weight:800;margin:0 0 10px}.progress-row{display:flex;align-items:center;justify-content:space-between;gap:8px}.progress-track{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:12px 0 7px}.progress-fill{height:100%;width:0;background:var(--accent);transition:width .2s}.muted{color:var(--muted)}.small{font-size:.82rem}.controls{display:flex;gap:8px;align-items:center}.btn,select{font:inherit;border:1px solid var(--line);border-radius:11px;background:var(--panel2);color:var(--text);padding:10px 12px}.btn{font-weight:750;cursor:pointer}.btn:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}.btn.primary{background:var(--accent);color:var(--accentText);border-color:var(--accent)}select{min-width:0;flex:1}.phase{color:var(--muted);font-size:.82rem;margin-bottom:4px}.week-title{font-size:1.4rem;font-weight:850;margin:0 0 6px}.session{border:1px solid var(--line);border-radius:14px;padding:13px;margin-top:10px;background:#17221d}.session-top{display:flex;gap:11px;align-items:flex-start}.check{width:24px;height:24px;accent-color:var(--accent);flex-shrink:0;margin-top:2px}.session-name{font-size:1rem;font-weight:800}.session-time{font-size:.8rem;color:var(--muted);margin:3px 0 7px}.session-desc{font-size:.88rem;color:#d9e5dc}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:3px 7px;font-size:.67rem;letter-spacing:.04em;font-weight:800;color:var(--muted)}.done .session-name{text-decoration:line-through;color:var(--muted)}.zones{display:grid;grid-template-columns:1fr auto;gap:9px;font-size:.9rem}.zones div:nth-child(even){font-weight:750;text-align:right}.rule{font-size:.88rem;margin:7px 0}.footer{font-size:.76rem;color:var(--muted);margin:16px 2px}.install{display:none}.install.show{display:block}.week-nav{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:8px}
-@media(min-width:560px){main{padding-top:28px}.title{font-size:2.4rem}.card{padding:18px}}
+:root{color-scheme:dark;--bg:#101916;--panel:#1b2823;--panel2:#24342d;--text:#f2f7f3;--muted:#b7c8bd;--accent:#8de0a5;--line:#385046;--warn:#f4cf7a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:850px;margin:auto;padding:18px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}h1{font-size:1.7rem;margin:0}h2{font-size:1.2rem;margin:0 0 12px}h3{font-size:1rem;margin:0 0 6px}.sub{color:var(--muted);margin:4px 0 0}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.field label{display:block;color:var(--muted);font-size:.9rem;margin-bottom:5px}.field input,.field select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:#0e1713;color:var(--text);font:inherit}button,.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:10px;padding:10px 13px;font:inherit;cursor:pointer}button.primary{background:var(--accent);color:#102117;border-color:var(--accent);font-weight:700}.actions{display:flex;gap:8px;flex-wrap:wrap}.zones{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:8px}.zone{background:#14211a;border:1px solid var(--line);border-radius:10px;padding:10px}.zone strong{display:block}.muted{color:var(--muted)}.week{border-top:1px solid var(--line);padding:13px 0}.week:first-child{border-top:0}.weekhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.tag{font-size:.78rem;color:#102117;background:var(--accent);border-radius:20px;padding:3px 8px;white-space:nowrap}.tag.rest{background:var(--warn)}.workout{background:#14211a;border-radius:10px;padding:10px;margin:8px 0}.workout p{margin:5px 0}.check{display:flex;gap:9px;align-items:flex-start;margin-top:9px}.check input{margin-top:5px;accent-color:var(--accent);transform:scale(1.15)}progress{width:100%;height:12px;accent-color:var(--accent)}small{color:var(--muted)}footer{color:var(--muted);font-size:.85rem;padding:10px 0 30px}.hidden{display:none}@media(min-width:650px){main{padding:28px}}
 </style>
 </head>
-<body>
-<main>
-<header>
- <div><div class="eyebrow">IL TUO PIANO INVERNALE</div><h1 class="title">Salita Coach 🚴</h1><div class="sub">Ottobre 2026 – marzo 2027</div></div>
- <div class="tag">FTP · 200 W</div>
-</header>
+<body><main>
+<header><div><h1>🚴 Salita Coach</h1><p class="sub">Piano invernale personalizzabile · ottobre–marzo</p></div><button id="resetBtn">Azzera spunte</button></header>
+<section class="card">
+<h2>Il tuo profilo</h2>
 <div class="grid">
- <div class="card"><div class="stat-label">FTP iniziale</div><div class="stat-value">200 W</div></div>
- <div class="card"><div class="stat-label">Frequenza</div><div class="stat-value">2 sedute/sett.</div></div>
- <div class="card"><div class="stat-label">Focus</div><div class="stat-value">Salite lunghe</div></div>
+<div class="field"><label for="ftp">FTP (watt)</label><input id="ftp" type="number" min="80" max="600" step="1" value="200"></div>
+<div class="field"><label for="freq">Allenamenti a settimana</label><select id="freq"><option value="1">1 seduta</option><option value="2" selected>2 sedute</option><option value="3">3 sedute</option><option value="4">4 sedute</option></select></div>
+<div class="field"><label for="hours">Tempo disponibile</label><select id="hours"><option value="2">2 ore</option><option value="3" selected>3 ore</option><option value="4">4 ore</option></select></div>
 </div>
-<div class="card">
- <div class="progress-row"><h2 class="section-title" style="margin:0">I tuoi progressi</h2><strong id="count">0/48 sedute</strong></div>
- <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
- <div class="small muted" id="progress-note">Spunta le sedute completate: i progressi vengono salvati su questo dispositivo.</div>
-</div>
-<div class="card">
- <h2 class="section-title">Calendario settimanale</h2>
- <div class="week-nav">
-  <button class="btn" id="prev" aria-label="Settimana precedente">‹</button>
-  <select id="week" aria-label="Scegli settimana"></select>
-  <button class="btn" id="next" aria-label="Settimana successiva">›</button>
- </div>
- <div style="margin-top:14px"><div class="phase" id="phase"></div><h2 class="week-title" id="weektitle"></h2><div class="small muted" id="focus"></div></div>
- <div id="sessions"></div>
-</div>
-<div class="card">
- <h2 class="section-title">Zone di potenza · FTP 200 W</h2>
- <div class="zones">
-  <div>Recupero</div><div>100–110 W</div>
-  <div>Fondo Z2</div><div>112–150 W</div>
-  <div>Tempo</div><div>152–174 W</div>
-  <div>Sweet Spot</div><div>176–188 W</div>
-  <div>Soglia</div><div>190–200 W</div>
-  <div>VO₂max</div><div>212–240 W</div>
- </div>
- <p class="small muted">Valori indicativi. Aggiorna la FTP quando il test o la tua forma suggeriscono che è cambiata.</p>
-</div>
-<div class="card">
- <h2 class="section-title">Regole del coach</h2>
- <p class="rule">• Lascia idealmente almeno 48 ore tra le sedute.</p>
- <p class="rule">• Aumenta prima la durata degli intervalli, poi la potenza.</p>
- <p class="rule">• Cadenza: da 80–85 rpm verso 85–95 rpm, senza rimbalzare in sella.</p>
- <p class="rule">• Ogni quarta settimana è più leggera; se sei stanco, riduci l'intensità.</p>
- <p class="rule">• I nomi dei workout possono variare nella libreria Zwift: se non trovi un nome, scegli un equivalente della stessa categoria e durata.</p>
- <div class="controls" style="margin-top:14px;flex-wrap:wrap">
-  <button class="btn" id="export">Esporta progressi</button>
-  <button class="btn" id="reset">Azzera spunte</button>
- </div>
- <p class="small muted" id="status" role="status" aria-live="polite"></p>
-</div>
-<div class="card install" id="install-card">
- <h2 class="section-title">Installa Salita Coach</h2>
- <p class="small muted">Aggiungi l'app alla schermata Home per aprirla come un'applicazione.</p>
- <button class="btn primary" id="install">Installa app</button>
-</div>
-<p class="footer">Salita Coach è un promemoria personale e non è affiliata a Zwift. Le spunte sono salvate localmente nel browser; non vengono sincronizzate con Zwift né con altri dispositivi. Per l'installazione PWA serve pubblicare questi file su un sito HTTPS.</p>
+<div class="actions" style="margin-top:12px"><button class="primary" id="saveProfile">Salva impostazioni</button><button id="exportBtn">Esporta progressi</button><button id="importBtn">Importa progressi</button><input id="importFile" type="file" accept="application/json" class="hidden"></div>
+<p class="muted" id="saveMsg" aria-live="polite">Le impostazioni e le spunte vengono salvate su questo dispositivo.</p>
+</section>
+<section class="card">
+<h2>Zone di potenza</h2><p class="muted">Calcolate in base alla FTP inserita. Sono indicazioni orientative.</p><div class="zones" id="zones"></div>
+</section>
+<section class="card">
+<h2>Progressi del piano</h2><progress id="progress" value="0" max="100"></progress><p id="progressText" class="muted">0 completati</p>
+</section>
+<section class="card">
+<h2>Piano di 26 settimane</h2><p class="muted">Due sedute principali: qualità in salita e fondo/cadenza. Se scegli 3–4 sedute, vengono aggiunte uscite facili brevi. Ogni quarta settimana è di scarico.</p>
+<div id="plan"></div>
+</section>
+<footer>Adatta sempre il carico alle sensazioni e recupera in caso di stanchezza insolita. Le indicazioni non sostituiscono il parere di un professionista. I dati restano nel browser del dispositivo; esportali per fare una copia di sicurezza.</footer>
 </main>
 <script>
-const weeks=[
-["Adattamento","Tempo #1","High-Cadence Builds","80–85 rpm","58 min","47 min"],
-["Adattamento","Sweet Spot Ramps - 30min","Endurance #1","80–85 rpm","55 min","60 min"],
-["Adattamento","Sweet Spot","Endurance #3","80–85 rpm","55 min","66 min"],
-["Scarico","High-Cadence Builds","Endurance #1 · facile","80–85 rpm","47 min","60 min"],
-["Costruzione aerobica","Sweet Spot","Endurance #3","85 rpm","55 min","66 min"],
-["Costruzione aerobica","Sweet Spot 12","Endurance #1","85 rpm","63 min","60 min"],
-["Costruzione aerobica","Sweet Spot Builds","Tempo Climbing · controllato","85–90 rpm","60 min","61 min"],
-["Scarico","High-Cadence Builds","Endurance #1 · facile","85–90 rpm","47 min","60 min"],
-["Salita specifica","Tempo Climbing","Endurance #3","85–90 rpm","61 min","66 min"],
-["Salita specifica","Sweet Spot 12","The Long Ride · controllato","85–90 rpm","63 min","85 min"],
-["Salita specifica","Sweet Spot Builds","Endurance #1","85–90 rpm","60 min","60 min"],
-["Scarico","High-Cadence Builds","Endurance #1 · facile","85–90 rpm","47 min","60 min"],
-["Soglia","Threshold #2","Endurance #3","85–90 rpm","66 min","66 min"],
-["Soglia","Sweet Spot 12","Tempo Climbing","85–90 rpm","63 min","61 min"],
-["Soglia","Threshold #6","Endurance #1","85–90 rpm","64 min","60 min"],
-["Scarico","High-Cadence Builds","Endurance #1 · facile","85–90 rpm","47 min","60 min"],
-["Resistenza in salita","Tempo Climbing","Endurance #3","85–95 rpm","61 min","66 min"],
-["Resistenza in salita","Threshold #2","The Long Ride · se recuperato","85–95 rpm","66 min","85 min"],
-["Resistenza in salita","Sweet Spot Builds","Endurance #3","85–95 rpm","60 min","66 min"],
-["Scarico","High-Cadence Builds","Endurance #1 · facile","85–95 rpm","47 min","60 min"],
-["Consolidamento","Sweet Spot 12","Endurance #3","85–95 rpm","63 min","66 min"],
-["Consolidamento","Threshold #6","Tempo Climbing","85–95 rpm","64 min","61 min"],
-["Scarico e recupero","Sweet Spot · facile","Endurance #1 · facile","Cadenza naturale","55 min","60 min"],
-["Test FTP","FTP Test · versione adatta","Recupero facile, solo se recuperato","Cadenza naturale","secondo workout","45–60 min"],
-["Consolidamento opzionale","Sweet Spot · moderato","Endurance #1","85–95 rpm","55 min","60 min"],
-["Consolidamento opzionale","Threshold · solo se fresco","Endurance #3","85–95 rpm","55–65 min","60 min"]
-];
-const key="salita-coach-progress-v1";
-let state={completed:{},week:0};
-try{const saved=JSON.parse(localStorage.getItem(key)||"null");if(saved&&saved.completed)state=saved;}catch(e){}
 const $=id=>document.getElementById(id);
-function persist(){try{localStorage.setItem(key,JSON.stringify(state));$("status").textContent="Progressi salvati su questo dispositivo.";}catch(e){$("status").textContent="Impossibile salvare localmente: esporta i progressi per conservarli.";} updateProgress();}
-function month(i){return i<4?"Ottobre 2026":i<8?"Novembre 2026":i<12?"Dicembre 2026":i<16?"Gennaio 2027":i<20?"Febbraio 2027":i<24?"Marzo 2027":"Marzo 2027 · extra";}
-function updateProgress(){const n=Object.values(state.completed).filter(Boolean).length;$("count").textContent=n+"/48 sedute";$("progress").style.width=Math.min(100,n/48*100)+"%";$("progress-note").textContent=n===48?"Tutte le 48 sedute principali risultano completate.":`Hai completato ${n} sedute su 48 previste nel piano principale.`;}
-function render(){
- const i=Math.max(0,Math.min(25,Number(state.week)||0));state.week=i;
- $("week").value=String(i);const w=weeks[i];
- $("phase").textContent=month(i)+" · Settimana "+(i+1)+" di 26";
- $("weektitle").textContent=w[0];
- $("focus").textContent="Cadenza obiettivo: "+w[3]+". Mantieni la pedalata fluida e controllata.";
- const host=$("sessions");host.replaceChildren();
- for(let j=0;j<2;j++){
-  const id=i+"-"+j, done=!!state.completed[id];
-  const box=document.createElement("div");box.className="session"+(done?" done":"");
-  const row=document.createElement("div");row.className="session-top";
-  const cb=document.createElement("input");cb.type="checkbox";cb.className="check";cb.checked=done;cb.setAttribute("aria-label","Segna seduta completata");
-  cb.addEventListener("change",()=>{state.completed[id]=cb.checked;persist();render();});
-  const content=document.createElement("div");content.style.flex="1";
-  const pill=document.createElement("span");pill.className="pill";pill.textContent=j===0?"SEDUTA A · QUALITÀ":"SEDUTA B · FONDO";
-  const title=document.createElement("div");title.className="session-name";title.style.marginTop="7px";title.textContent=w[j+1];
-  const time=document.createElement("div");time.className="session-time";time.textContent=w[j===0?4:5];
-  const desc=document.createElement("div");desc.className="session-desc";desc.textContent=j===0?"Riscaldamento e defaticamento inclusi. Mantieni gli intervalli regolari; riduci l'intensità se non riesci a completarli con controllo.":"Pedalata prevalentemente in Z2. Inserisci tratti agili solo se riesci a mantenere busto stabile e pedalata fluida.";
-  content.append(pill,title,time,desc);row.append(cb,content);box.append(row);host.append(box);
- }
- $("prev").disabled=i===0;$("next").disabled=i===25;
+const KEY='salita-coach-config-v2', PROG='salita-coach-progress-v2';
+const defaultConfig={ftp:200,freq:2,hours:3};
+let config={...defaultConfig}, completed={};
+try{config={...config,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){}
+try{completed=JSON.parse(localStorage.getItem(PROG)||'{}')}catch(e){}
+$('ftp').value=config.ftp;$('freq').value=config.freq;$('hours').value=config.hours;
+const fmt=n=>Math.round(n)+' W';
+function save(){config={ftp:Math.max(80,Math.min(600,Number($('ftp').value)||200)),freq:Number($('freq').value),hours:Number($('hours').value)};localStorage.setItem(KEY,JSON.stringify(config));render();$('saveMsg').textContent='Impostazioni salvate.'}
+function zones(){const f=config.ftp;const z=[['Z1 · Recupero',0,.55],['Z2 · Fondo',.56,.75],['Z3 · Tempo',.76,.90],['Z4 · Soglia',.91,1.05],['Z5 · VO₂',1.06,1.20],['Z6 · Anaerobica',1.21,1.50]];$('zones').innerHTML=z.map(a=>`<div class="zone"><strong>${a[0]}</strong><span>${fmt(f*a[1])}–${fmt(f*a[2])}</span></div>`).join('')}
+function session(title,duration,details){return {title,duration,details}}
+function workouts(w){
+ const deload=w%4===0;
+ if(deload)return [session('A · Recupero attivo',35,'Pedalata facile in Z1–Z2, agilità rilassata.'),session('B · Fondo leggero',45,'Z2 bassa, senza intervalli; termina fresco.')];
+ const phase=Math.ceil(w/4);
+ const a=phase<=2?'6 × 2 min in salita a Z4, recupero 3 min facile.':phase<=4?'4 × 5 min in salita a Z4, recupero 4 min facile.':phase<=5?'3 × 8 min a Z3 alta–Z4 bassa, recupero 5 min.':'2 × 12–15 min a Z3 alta–Z4, recupero 6 min.';
+ const b=phase<=2?'Fondo Z2 e 6 × 1 min ad alta cadenza (100–110 rpm), facili.':phase<=4?'Fondo Z2 con 3 × 6 min a cadenza 90–100 rpm.':'Fondo Z2 con 2 × 10 min a ritmo costante e cadenza fluida.';
+ const base=Math.round(config.hours*60/(config.freq>=3?3:2));
+ const main=Math.max(35,Math.min(90,Math.round(base*.65/5)*5));
+ let arr=[session('A · Qualità in salita',main,a),session('B · Fondo e cadenza',Math.max(35,Math.min(100,base-main+25)),b)];
+ if(config.freq>=3)arr.push(session('C · Fondo facile',30,'Z1–Z2 molto tranquilla, senza obiettivi di intensità.'));
+ if(config.freq>=4)arr.push(session('D · Agilità',25,'Pedalata facile con 6 × 30 secondi di cadenza alta, recupero completo.'));
+ return arr;
 }
-weeks.forEach((w,i)=>{const o=document.createElement("option");o.value=i;o.textContent="Settimana "+(i+1);$("week").append(o);});
-$("week").addEventListener("change",()=>{state.week=Number($("week").value);try{localStorage.setItem(key,JSON.stringify(state));}catch(e){}render();});
-$("prev").addEventListener("click",()=>{state.week=Math.max(0,state.week-1);render();});
-$("next").addEventListener("click",()=>{state.week=Math.min(25,state.week+1);render();});
-$("reset").addEventListener("click",()=>{if(confirm("Vuoi azzerare tutte le spunte del piano?")){state.completed={};persist();render();}});
-$("export").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({app:"Salita Coach",exportedAt:new Date().toISOString(),state},null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="salita-coach-progressi.json";a.click();URL.revokeObjectURL(a.href);$("status").textContent="Esportazione avviata: conserva il file come backup.";});
-let installPrompt=null;
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;$("install-card").classList.add("show");});
-$("install").addEventListener("click",async()=>{if(!installPrompt){$("status").textContent="In Chrome: menu ⋮ → Aggiungi a schermata Home oppure Installa app.";return;}installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$("install-card").classList.remove("show");});
-if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
-render();updateProgress();
+function renderPlan(){
+ let html='';
+ for(let w=1;w<=26;w++){
+  const deload=w%4===0, phase=Math.ceil(w/4), ws=workouts(w);
+  html+=`<div class="week"><div class="weekhead"><div><h3>Settimana ${w} <span class="muted">· ${['Base','Costruzione','Resistenza','Forza aerobica','Specifico','Consolidamento'][Math.min(5,Math.floor((w-1)/4))]}</span></h3><small>${deload?'Settimana di scarico: riduci il carico e punta al recupero.':'Aumenta gradualmente, senza forzare se sei affaticato.'}</small></div><span class="tag ${deload?'rest':''}">${deload?'SCARICO':`FASE ${phase}`}</span></div>
+  ${ws.map((s,i)=>{const id=`w${w}s${i+1}`;return `<div class="workout"><strong>${s.title}</strong> <span class="muted">· ${s.duration} min</span><p>${s.details}</p><label class="check"><input type="checkbox" data-id="${id}" ${completed[id]?'checked':''}><span>Segna come completato</span></label></div>`}).join('')}
+  </div>`;
+ }
+ $('plan').innerHTML=html;
+ $('plan').querySelectorAll('input[type=checkbox]').forEach(cb=>cb.addEventListener('change',()=>{completed[cb.dataset.id]=cb.checked;localStorage.setItem(PROG,JSON.stringify(completed));updateProgress()}));
+ updateProgress();
+}
+function updateProgress(){const boxes=[...$('plan').querySelectorAll('input[type=checkbox]')];const done=boxes.filter(x=>x.checked).length;const total=boxes.length;$('progress').value=total?done/total*100:0;$('progressText').textContent=`${done} di ${total} sedute completate (${Math.round(total?done/total*100:0)}%).`}
+function render(){zones();renderPlan()}
+$('saveProfile').addEventListener('click',save);
+['ftp','freq','hours'].forEach(id=>$(id).addEventListener('change',()=>{$('saveMsg').textContent='Hai modificato le impostazioni: premi “Salva impostazioni” per applicarle.'}));
+$('resetBtn').addEventListener('click',()=>{if(confirm('Vuoi azzerare tutte le spunte del piano?')){completed={};localStorage.setItem(PROG,'{}');renderPlan()}});
+$('exportBtn').addEventListener('click',()=>{const data={app:'Salita Coach',version:2,exportedAt:new Date().toISOString(),config,completed};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='salita-coach-progressi.json';a.click();URL.revokeObjectURL(a.href)});
+$('importBtn').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(d.config)config={...defaultConfig,...d.config};if(d.completed)completed=d.completed;$('ftp').value=config.ftp;$('freq').value=config.freq;$('hours').value=config.hours;localStorage.setItem(KEY,JSON.stringify(config));localStorage.setItem(PROG,JSON.stringify(completed));render();$('saveMsg').textContent='Progressi importati.'}catch(err){alert('File non valido. Scegli un’esportazione di Salita Coach.')}e.target.value=''});
+render();
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 </script>
-</body>
-</html>
+</body></html>
